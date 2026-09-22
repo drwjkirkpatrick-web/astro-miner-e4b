@@ -1,1 +1,114 @@
-placeholder
+Create "ASTRO MINER" — a browser-based asteroid mining space game in a single HTML file.
+
+CONCEPT:
+Top-down 2D space game. Player pilots a mining ship through asteroid fields, drills asteroids for minerals, refines ore, trades at stations, upgrades their ship, and fends off space hazards. Think "Asteroids" meets a mining/management sim.
+
+CORE MECHANICS:
+
+1. SHIP PHYSICS (Newtonian):
+- Thrust with W/Up, rotate with A/D or Left/Right
+- Momentum and inertia — ship drifts when engines off
+- Visual engine flame when thrusting
+- Brake with S/Down (reverse thrust)
+
+2. ASTEROID MINING:
+- Asteroids of 3 types: common (iron/silicate), rare (platinum/gold), volatile (ice/crystals)
+- Each type has distinct color: grey, gold, cyan
+- Approach asteroid and press SPACE to activate mining laser/drill
+- Mining beam visibly connects ship to asteroid
+- Asteroid shrinks as mined, releases mineral particles
+- Each asteroid yields 5-15 units of ore
+- Asteroids regenerate over time in new random positions
+- Some asteroids are unstable — explode if mined too long (damage ship)
+
+3. CARGO & REFINING:
+- Ship has cargo hold (starts at 50 units, upgradeable)
+- Ore types tracked separately: iron, platinum, gold, ice, crystals
+- Cargo meter in HUD showing fill level
+- Press R to jettison cargo if needed
+
+4. SPACE STATIONS:
+- 2-3 stations positioned in the play area
+- Dock by approaching and pressing L
+- Station interface shows: sell ore, buy fuel, repair hull, upgrade ship
+- Ore prices: iron=10, platinum=50, gold=80, ice=15, crystals=120
+- Fuel costs 5 credits/unit
+- Hull repair costs 2 credits/HP
+
+5. SHIP UPGRADES (at station):
+- Cargo capacity: 50 → 100 → 200 (costs 2000, 5000)
+- Mining speed: 1x → 2x → 3x (costs 1500, 4000)
+- Hull strength: 100 → 150 → 200 (costs 1000, 3000)
+- Engine power: affects acceleration (costs 1200, 3000)
+- Shield: reduces damage by 50% (cost 5000, one-time)
+
+6. HAZARDS:
+- Floating debris that damages hull on collision
+- Solar flares: periodic waves that damage ship if not behind cover
+- Pirate drones: appear periodically, chase player, shoot projectiles
+- Destroy pirates with mining laser or evade them
+- Unstable asteroids explode when over-mined (area damage)
+
+7. ECONOMICS:
+- Start with 500 credits and 100 fuel
+- Goal: earn 10,000 credits to "retire" (win condition)
+- Track total earned, asteroids mined, pirates destroyed
+- Credits persist across docking sessions
+
+8. HUD:
+- Credits (top left)
+- Fuel gauge (top left, bar)
+- Hull HP (top left, bar with color: green > yellow > red)
+- Cargo hold fill (top right, bar + ore breakdown)
+- Current system/sector name
+- Minimap (top right corner) showing asteroids, stations, pirates
+- Score/stats panel
+
+9. VISUAL EFFECTS:
+- Parallax starfield (3 layers, different speeds)
+- Nebula gradients in background
+- Mining laser: bright beam with glow, particles where it hits asteroid
+- Explosions: particle bursts for asteroids, pirates, debris
+- Engine flame: animated, scale based on thrust
+- Shield bubble effect when purchased
+- Screen shake on damage taken
+- Asteroid rotation animation
+- Mineral particles fly toward ship when mined
+
+10. AUDIO (Web Audio API):
+- Mining laser hum (continuous while mining)
+- Ore collected chime
+- Engine thrust rumble
+- Explosion sounds (asteroid, pirate, debris)
+- Station docking confirm
+- Purchase/upgrade success sound
+- Damage taken alert
+- Solar flare warning siren
+- Low fuel / low hull warning beep
+
+11. GAME FLOW:
+- Title screen: "ASTRO MINER" with starfield animation, "PRESS SPACE TO LAUNCH"
+- Brief tutorial overlay on first play (controls shown)
+- Pause with Escape
+- Game over when hull reaches 0
+- Win screen when credits reach 10,000
+- High score saved to localStorage (most credits earned, asteroids mined)
+
+12. CONTROLS SUMMARY:
+- W/Up: Thrust forward
+- S/Down: Brake/reverse
+- A/D or Left/Right: Rotate ship
+- Space: Mining laser on/off
+- L: Dock at station (when near)
+- R: Jettison cargo
+- Escape: Pause
+- M: Toggle minimap size
+
+OUTPUT REQUIREMENTS:
+- Single self-contained HTML file (index.html)
+- All CSS in <style> tags, all JS in <script> tags
+- Canvas-based rendering
+- No external dependencies, no CDN links, no images
+- Must work offline by opening the file in a browser
+- Clean, readable code with comments for major sections
+- You MUST use the create_text_file tool to write index.html
